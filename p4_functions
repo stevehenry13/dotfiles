@@ -1,0 +1,19 @@
+#!/bin/bash
+
+p4_login_check()
+{
+   if [ -z "`p4 login -s 2>/dev/null | grep User`" ]; then
+      echo "Perforce login ($LOGNAME)"
+      p4 login
+   fi
+}
+
+get_p4_files()
+{
+   files=`p4 fstat $2 -e $1 ... 2>/dev/null | \
+          awk '$2 == "clientFile" { file = $3 }; \
+               $2 == "type" { type = $3 }; \
+               $2 == "headType" && "" == type { type = $3 }; \
+               /^$/ && "binary" != substr(type,"binary") { print file; file = ""; type = "" }'`
+
+}

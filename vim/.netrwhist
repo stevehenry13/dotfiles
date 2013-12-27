@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/shenry/sandbox/kg250x/p2cm/VRL/OS/JTE2/release/2_0_3/include/jte'
+let g:netrw_dirhist_2='/home/shenry/sandbox/kg250x/p2cm/VRL/OS/JTE2/release/2_0_3/include/jte/arch'
+let g:netrw_dirhist_3='/home/shenry/sandbox/kg250/devtools/p2cm/Tools/kg250x_bundle'
+let g:netrw_dirhist_4='/home/shenry/sandbox/kg250/devtools/p2cm/Tools/create_dlfile/sample_tests/p2cm_signed'
+let g:netrw_dirhist_5='/home/shenry/sandbox/kg250x/p2cm/fp/common'
+let g:netrw_dirhist_6='/home/shenry/sandbox/kg250x/p2cm/common/zlib'

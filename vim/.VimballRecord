@@ -1,0 +1,3 @@
+supertab.vba: call delete('/home/shenry/.vim/doc/supertab.txt')|call delete('/home/shenry/.vim/plugin/supertab.vim')
+snippy_plugin.vba: call delete('/home/shenry/.vim/plugin/snippetsEmu.vim')|call delete('/home/shenry/.vim/doc/snippets_emu.txt')
+cecscope.vba: call delete('/home/shenry/.vim/plugin/cecscope.vim')|call delete('/home/shenry/.vim/doc/cecscope.txt')

@@ -1,0 +1,25 @@
+URxvt*font: xft:DejaVu Sans Mono-10
+URxvt*foreground: #000000
+URxvt*background: #F5F5F5
+URxvt*cursorColor: #00FF00
+URxvt*Color0: #000000
+URxvt*Color1: #0000AA
+URxvt*Color2: #555555
+URxvt*Color3: #5555FF
+URxvt*Color4: #AA0000
+URxvt*Color5: #AA00AA
+URxvt*Color6: #FF5555
+URxvt*Color7: #FF55FF
+URxvt*Color8: #00AA00
+URxvt*Color9: #00AAAA
+URxvt*Color10: #55FF55
+URxvt*Color11: #55FFFF
+URxvt*Color12: #AAAA00
+URxvt*Color13: #AAAAAA
+URxvt*Color14: #FFFF55
+URxvt*Color15: #FFFFFF
+URxvt*geometry: 150x50
+URxvt*scrollBar_right: True
+URxvt*thickness: 15
+URxvt*scrollTtyOutput: False
+URxvt*scrollTtyKeypress: True
