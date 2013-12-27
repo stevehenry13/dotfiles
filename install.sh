@@ -1,7 +1,7 @@
 #!/bin/bash
 
 for file in $(ls $(dirname $0) | grep -v *.pub | grep -v $(basename $0)); do
-  if [ -e ~/.$file ]; then
+  if [ -f ~/.$file -o -d ~/.$file ]; then
     mv ~/.$file{,.bak}
   fi
 
