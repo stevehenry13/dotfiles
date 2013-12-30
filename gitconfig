@@ -6,3 +6,5 @@
 	prompt = false
 [alias]
 	d = difftool
+[merge]
+	tool = vimdiff

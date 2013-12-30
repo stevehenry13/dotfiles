@@ -15,6 +15,9 @@ for file in $file_list; do
   ln -s $(pwd)/$file ~/.$file
 done
 
+# Fix the svn diff to look in the right home directory
+sed -i 's,diff-cmd = .*\([\.a-z_]\),${HOME}/\1,' ~/.subversion/config
+
 # ssh pub keys should be add to authorized_keys, so that passwordless ssh works
 for file in $(ls $(dirname $0)/*.pub); do
   if [ -z "$(grep "$(cat $file)" ~/.ssh/authorized_keys 2>/dev/null)" ]; then
