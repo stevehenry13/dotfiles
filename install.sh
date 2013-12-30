@@ -1,7 +1,14 @@
 #!/bin/bash
 
-for file in $(ls $(dirname $0) | grep -v *.pub | grep -v $(basename $0)); do
-  if [ -f ~/.$file -o -d ~/.$file ]; then
+file_list=$(ls $(dirname $0) | grep -v *.pub | grep -v subversion | grep -v $(basename $0))
+
+# only link the svn config file, not the whole directory
+file_list="$file_list subversion/config"
+
+for file in $file_list; do
+  if [ -h ~/.$file ]; then
+    rm ~/.$file
+  elif [ -e ~/.$file ]; then
     mv ~/.$file{,.bak}
   fi
 
