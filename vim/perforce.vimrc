@@ -1,5 +1,4 @@
 noremap <leader>b       :call P4login() <CR> :call P4Blame() <CR><CR>
-noremap <leader>d       :call P4login() <CR> :call P4Diff('') <CR><CR>
 noremap <leader>e       :call P4login() <CR> :!p4 edit % <CR><CR>
 noremap <leader>r       :call P4login() <CR> :!p4 revert % <CR><CR>
 
@@ -21,6 +20,19 @@ function! P4DiffPrint(fileRev)
    diffthis
    0,0g/^$/d
    wincmd p
+endfunction
+
+function! P4Diff(...)
+   let filename = system('echo -n '.expand('%'))
+   if empty( a:2 )
+      let filename .= ('' == a:1 ? '\#head' : a:1)
+      diffthis
+   else
+      call P4DiffPrint(filename.a:2.a:1)
+      bd
+      let filename .= ('@=' == a:2 ? '\#head' : a:2.(a:1 - 1))
+   endif
+   call P4DiffPrint(filename)
 endfunction
 
 function! P4Blame()
@@ -67,19 +79,4 @@ function! P4Blame()
    exe 'set syntax='.file_syntax
    exe 'file '.filename.'\#head'
    0,0g/^$/d
-endfunction
-
-function! P4Diff(rev)
-   let filename = system('echo -n '.expand('%'))
-   let filename .= ('' == a:rev ? '\#head' : a:rev)
-   diffthis
-   call P4DiffPrint(filename)
-endfunction
-
-function! P4DiffCL(revText, revNum)
-   let filename = system('echo -n '.expand('%'))
-   call P4DiffPrint(filename.a:revText.a:revNum)
-   bd
-   let filename .= ('@=' == a:revText ? '\#head' : a:revText.(a:revNum - 1))
-   call P4DiffPrint(filename)
 endfunction

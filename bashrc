@@ -201,8 +201,8 @@ if which tmux 2>&1 >/dev/null; then
       if [ 0 -eq "$?" ]; then
          tmux attach
       else
-         if [ "$(hostname)" == "vmalnx08" ]; then
-            ~/bin/tmux_main
+         if [ -x ~/bin/tmux_$(hostname) ]; then
+            ~/bin/tmux_$(hostname)
          else
             tmux new-session
          fi
