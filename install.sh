@@ -18,10 +18,19 @@ done
 # Fix the svn diff to look in the right home directory
 sed -i 's,diff-cmd = .*\([\.a-z_]\),${HOME}/\1,' ~/.subversion/config
 
+if [ -h ~/.Xresources ]; then
+  rm ~/.Xresources
+fi
+
+# symlink for X config
+ln -s ~/.Xdefaults ~/.Xresources
+
 # ssh pub keys should be add to authorized_keys, so that passwordless ssh works
 for file in $(ls $(dirname $0)/*.pub); do
   if [ -z "$(grep "$(cat $file)" ~/.ssh/authorized_keys 2>/dev/null)" ]; then
     mkdir -p ~/.ssh
     cat $file >> ~/.ssh/authorized_keys
+    chmod 700 ~/.ssh
+    chmod 640 ~/.ssh/authorized_keys
   fi
 done

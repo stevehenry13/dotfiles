@@ -5,6 +5,8 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+export EDITOR=vim
+
 export P4CONFIG=.p4c
 export P4DIFF=vimdiff
 
@@ -192,6 +194,12 @@ alias vi='vim'
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
+fi
+
+if [ -d ${HOME}/.bash_completion ]; then
+ for file in ${HOME}/.bash_completion/* ; do
+   source $file
+ done
 fi
 
 # TMUX
