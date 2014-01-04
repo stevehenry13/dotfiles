@@ -12,6 +12,8 @@ for file in $file_list; do
     mv ~/.$file{,.bak}
   fi
 
+  # Ensure the parent dir exists
+  mkdir -p $(dirname ~/.$file)
   ln -s $(pwd)/$file ~/.$file
 done
 
