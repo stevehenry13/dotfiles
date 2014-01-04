@@ -1,4 +1,5 @@
 filetype plugin on
+filetype plugin indent on
 let g:load_doxygen_syntax=1
 let g:matchparen_insert_timeout=5
 let g:matchparen_timeout=25

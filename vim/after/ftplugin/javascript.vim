@@ -1,3 +1,1 @@
-source $HOME/.vim/after/ftplugin/code.vim
-setlocal tabstop=2
-setlocal shiftwidth=2
+source $HOME/.vim/after/ftplugin/ruby.vim
