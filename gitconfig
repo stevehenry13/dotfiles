@@ -1,5 +1,6 @@
 [user]
 	name = Steve Henry
+	email = stevehenry13@gmail.com
 [diff]
 	tool = vimdiff
 [difftool]
