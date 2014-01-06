@@ -9,7 +9,7 @@
 [merge]
 	tool = vimdiff
 [core]
-	pager = less -F -X -R +'/---'
+	pager = less -F -X -R
 	editor = vim
 [color]
 	ui = auto
