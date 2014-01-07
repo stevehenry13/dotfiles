@@ -1,7 +1,3 @@
-noremap <leader>b       :call P4login() <CR> :call P4Blame() <CR><CR>
-noremap <leader>e       :call P4login() <CR> :!p4 edit % <CR><CR>
-noremap <leader>r       :call P4login() <CR> :!p4 revert % <CR><CR>
-
 function! P4login()
    let login_string = system( "p4 login -s 2>/dev/null | grep User" )
    if empty( login_string )

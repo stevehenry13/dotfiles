@@ -23,6 +23,10 @@ set errorformat^=%-GCreated:%m
 set errorformat^=%-G%m\ RuntimeWarning:\ Python\ C\ API\ version\ mismatch\ for\ module\ mcrypt:\ This\ Python\ has\ API\ version\ 1013\\,\ module\ mcrypt\ has\ version\ 1012.
 set pastetoggle=<leader>p
 
+noremap <leader>a       :call SAddEdit() <CR><CR>
+noremap <leader>e       :call SAddEdit() <CR><CR>
+noremap <leader>b       :call SBlame() <CR><CR>
+noremap <leader>r       :call SCheckoutRevert() <CR><CR>
 noremap <leader>d       :call SDiff('') <CR><CR>
 noremap <leader>g       :Grep <CR>
 noremap <leader>x       :%!xxd <CR>
@@ -81,6 +85,10 @@ if 1 == executable( 'p4' )
    source $HOME/.vim/perforce.vimrc
 endif
 
+if 1 == executable( 'svn' )
+   source $HOME/.vim/svn.vimrc
+endif
+
 function MyTabLine()
    let s = ''
    let i = 1
@@ -134,28 +142,6 @@ function! Shenry_Build(target, model, input)
    endif
 endfunction
 
-function! SvnDiffPrint(file, rev)
-   let file_syntax=&syntax
-   vnew
-   setlocal buftype=nofile bufhidden=hide noswapfile
-   exe 'read !svn cat -r '.a:rev.' '.a:file.' 2>/dev/null'
-   exe 'set syntax='.file_syntax
-   exe 'file '.a:file.a:rev
-   diffthis
-   0,0g/^$/d
-   wincmd p
-endfunction
-
-function! SvnDiff(...)
-   let filename = system('echo -n '.expand('%'))
-   let rev = 'HEAD'
-   if a:0 >= 1 && a:1 != ''
-      let rev = a:1
-   endif
-   diffthis
-   call SvnDiffPrint(filename, rev)
-endfunction
-
 function! SDiff(...)
    if '' != FindProjectRoot( '.git' )
       Gdiff
@@ -163,6 +149,36 @@ function! SDiff(...)
       call call( "SvnDiff", a:000  )
    else
       call call( "P4Diff", a:000 )
+   endif
+endfunction
+
+function! SBlame()
+   if '' != FindProjectRoot( '.git' )
+      Gblame
+   elseif '' != FindProjectRoot( '.svn' )
+      call SvnBlame()
+   else
+      call P4Blame()
+   endif
+endfunction
+
+function! SAddEdit()
+   if '' != FindProjectRoot( '.git' )
+      Gadd
+   elseif '' != FindProjectRoot( '.svn' )
+      :!svn add % <CR>
+   else
+      :!p4 edit % <CR>
+   endif
+endfunction
+
+function! SCheckoutRevert()
+   if '' != FindProjectRoot( '.git' )
+      Gcheckout
+   elseif '' != FindProjectRoot( '.svn' )
+      :!svn revert % <CR>
+   else
+      :!p4 revert % <CR>
    endif
 endfunction
 
