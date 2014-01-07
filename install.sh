@@ -1,9 +1,9 @@
 #!/bin/bash
 
-file_list=$(ls $(dirname $0) | grep -v *.pub | grep -v subversion | grep -v $(basename $0))
+file_list=$(ls $(dirname $0) | grep -v -e "*.pub" -e "subversion" -e "ssh" -e "$(basename $0)")
 
 # only link the svn config file, not the whole directory
-file_list="$file_list subversion/config"
+file_list="$file_list subversion/config ssh/config"
 
 for file in $file_list; do
   if [ -h ~/.$file ]; then
@@ -14,11 +14,11 @@ for file in $file_list; do
 
   # Ensure the parent dir exists
   mkdir -p $(dirname ~/.$file)
-  ln -s $(pwd)/$file ~/.$file
+  ln -s $(pwd)/$(dirname $0)/$file ~/.$file
 done
 
 # Fix the svn diff to look in the right home directory
-sed -i 's,diff-cmd = .*\([\.a-z_]\),${HOME}/\1,' ~/.subversion/config
+sed -i "s,\(diff-cmd = \).*/\([\.a-z_]*\),\1${HOME}/\2," ~/.subversion/config
 
 if [ -h ~/.Xresources ]; then
   rm ~/.Xresources
