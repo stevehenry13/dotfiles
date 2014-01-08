@@ -47,39 +47,39 @@ noremap <F1> <nop>
 command! -nargs=* -complete=shellcmd R vnew | setlocal buftype=nofile bufhidden=hide noswapfile | r !<args>
 
 hi clear BadFormat
-hi       BadFormat    ctermfg=black ctermbg=gray
+hi       BadFormat    ctermfg=black ctermbg=lightgray
 hi clear SpellBad
-hi       SpellBad     ctermfg=red                  cterm=undercurl
-hi clear SpellLocal
-hi       SpellLocal   ctermfg=red                  cterm=undercurl
-hi clear SpellCap
-hi       SpellCap     ctermfg=blue                 cterm=undercurl
-hi clear DiffAdd
-hi       DiffAdd      ctermfg=black ctermbg=yellow cterm=none
-hi clear DiffText
-hi       DiffText     ctermfg=black ctermbg=yellow cterm=none
-hi clear DiffChange
-hi       DiffChange                 ctermbg=none   cterm=none
+hi       SpellBad     ctermfg=red                     cterm=undercurl
+hi clear SpellLocal                                   
+hi       SpellLocal   ctermfg=red                     cterm=undercurl
+hi clear SpellCap                                     
+hi       SpellCap     ctermfg=blue                    cterm=undercurl
+hi clear DiffAdd                                      
+hi       DiffAdd      ctermfg=black ctermbg=yellow    cterm=none
+hi clear DiffText                                     
+hi       DiffText     ctermfg=black ctermbg=yellow    cterm=none
+hi clear DiffChange                                   
+hi       DiffChange                 ctermbg=none      cterm=none
 hi clear DiffDelete
 hi       DiffDelete                 ctermbg=none
 hi clear StatusLineNC
-hi       StatusLineNC ctermfg=black ctermbg=gray   cterm=none
+hi       StatusLineNC ctermfg=black ctermbg=lightgray cterm=none
 hi clear StatusLine
-hi       StatusLine   ctermfg=white ctermbg=black  cterm=none
+hi       StatusLine   ctermfg=white ctermbg=black     cterm=none
 hi clear TabLine
-hi       TabLine      ctermfg=black ctermbg=gray   cterm=none
+hi       TabLine      ctermfg=black ctermbg=lightgray cterm=none
 hi clear TabLineFill
-hi       TabLineFill  ctermfg=black ctermbg=gray   cterm=none
+hi       TabLineFill  ctermfg=black ctermbg=lightgray cterm=none
 hi clear TabLineSel
-hi       TabLineSel   ctermfg=white ctermbg=black  cterm=bold
+hi       TabLineSel   ctermfg=white ctermbg=black     cterm=bold
 hi clear TabNum
-hi       TabNum       ctermfg=blue  ctermbg=gray   cterm=none
+hi       TabNum       ctermfg=blue  ctermbg=lightgray cterm=none
 hi clear TabNumSel
-hi       TabNumSel    ctermfg=cyan  ctermbg=black  cterm=bold
+hi       TabNumSel    ctermfg=cyan  ctermbg=black     cterm=bold
 hi clear TabBufNum
-hi       TabBufNum    ctermfg=red   ctermbg=gray   cterm=none
+hi       TabBufNum    ctermfg=red   ctermbg=lightgray cterm=none
 hi clear TabBufNumSel
-hi       TabBufNumSel ctermfg=red   ctermbg=black  cterm=bold
+hi       TabBufNumSel ctermfg=red   ctermbg=black     cterm=bold
 
 if 1 == executable( 'p4' )
    source $HOME/.vim/perforce.vimrc
