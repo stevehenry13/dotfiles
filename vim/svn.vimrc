@@ -4,7 +4,7 @@ function! SvnDiffPrint(file, rev)
    setlocal buftype=nofile bufhidden=hide noswapfile
    exe 'read !svn cat -r '.a:rev.' '.a:file.' 2>/dev/null'
    exe 'set syntax='.file_syntax
-   exe 'file '.a:file.a:rev
+   exe 'file '.a:file.'@'.a:rev
    diffthis
    0,0g/^$/d
    wincmd p
