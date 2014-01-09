@@ -19,6 +19,9 @@ fi
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
 
+# don't let crtl-d close the session.
+set -o ignoreeof
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 
