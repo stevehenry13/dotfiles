@@ -18,9 +18,7 @@ set ruler
 set magic
 set spell
 set errorfile=make_output.txt
-set errorformat^=%-G%f:%l:\ TARG\ not\ defined\ as\ one\ of:\ %m
-set errorformat^=%-GCreated:%m
-set errorformat^=%-G%m\ RuntimeWarning:\ Python\ C\ API\ version\ mismatch\ for\ module\ mcrypt:\ This\ Python\ has\ API\ version\ 1013\\,\ module\ mcrypt\ has\ version\ 1012.
+set nocscopeverbose
 set pastetoggle=<leader>p
 
 noremap <leader>a       :call SAddEdit() <CR><CR>

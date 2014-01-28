@@ -40,3 +40,9 @@ ehthumbs.db
 Thumbs.db
 *~
 *.swp
+
+# Hidden/personal preference #
+##############################
+.rvmrc
+.starscope.db
+cscope.out
