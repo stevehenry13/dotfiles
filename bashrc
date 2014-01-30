@@ -120,6 +120,16 @@ host_color()
 
 color_prompt()
 {
+   status=$($(which git) status --porcelain)
+
+   if [ "$?" = 0 ]; then
+      if [ -z "$status" ]; then
+         git_color=${COLOR_GREEN}
+      else
+         git_color=${COLOR_RED}
+      fi
+   fi
+
    echo -ne "$1[${COLOR_DEFAULT}"    #status color '['
    echo -ne "\!"                     #history num
    echo -ne "$1][${COLOR_DEFAULT}"   #status color ']['
@@ -133,6 +143,13 @@ color_prompt()
    echo -ne "$1:${COLOR_DEFAULT}"    #status color ':'
    echo -ne "\w"                     #workspace
    echo -ne "$1]"                    #status color ']'
+
+   if [ -n "$git_color" ]; then
+      echo -ne "$git_color[${COLOR_DEFAULT}"
+      echo -ne "\$($(which git) branch | awk '{if (\$1 == \"*\") print \$2}')"
+      echo -ne "$git_color]${COLOR_DEFAULT}"
+   fi
+
    echo -ne "\$"                     #status color '$' or '#'
    echo -e "${COLOR_DEFAULT} "       #return to black
 }
@@ -180,9 +197,9 @@ if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
     #alias dir='ls --color=auto --format=vertical'
     #alias vdir='ls --color=auto --format=long'
 
-    #alias grep='grep --color=auto'
-    #alias fgrep='fgrep --color=auto'
-    #alias egrep='egrep --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
 
 # some more ls aliases
