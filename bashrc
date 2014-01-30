@@ -130,28 +130,28 @@ color_prompt()
       fi
    fi
 
-   echo -ne "$1[${COLOR_DEFAULT}"    #status color '['
-   echo -ne "\!"                     #history num
-   echo -ne "$1][${COLOR_DEFAULT}"   #status color ']['
-   echo -ne "\$(date +%H:%M:%S)"     #time
-   echo -ne "$1]["                   #status color ']['
-   username_color                    #set color for username
-   echo -ne "\u"                     #username
-   echo -ne "$1@"                    #status color '@'
-   host_color                        #set color for host
-   echo -ne "\h"                     #host
-   echo -ne "$1:${COLOR_DEFAULT}"    #status color ':'
-   echo -ne "\w"                     #workspace
-   echo -ne "$1]"                    #status color ']'
-
-   if [ -n "$git_color" ]; then
-      echo -ne "$git_color[${COLOR_DEFAULT}"
-      echo -ne "\$($(which git) branch | awk '{if (\$1 == \"*\") print \$2}')"
-      echo -ne "$git_color]${COLOR_DEFAULT}"
+   echo -ne "$1[${COLOR_DEFAULT}"            # status color '['
+   echo -ne "\!"                             # history num
+   echo -ne "$1][${COLOR_DEFAULT}"           # status color ']['
+   echo -ne "\$(date +%H:%M:%S)"             # time
+   echo -ne "$1]["                           # status color ']['
+   username_color                            # set color for username
+   echo -ne "\u"                             # username
+   echo -ne "$1@"                            # status color '@'
+   host_color                                # set color for host
+   echo -ne "\h"                             # host
+   echo -ne "$1:${COLOR_DEFAULT}"            # status color ':'
+   echo -ne "\w"                             # workspace
+   echo -ne "$1]"                            # status color ']'
+                                               
+   if [ -n "$git_color" ]; then              # if in git repository
+      echo -ne "$git_color[${COLOR_DEFAULT}" # git status '['
+      echo -ne "\$($(which git) rev-parse --abbrev-ref HEAD)" # current git branch
+      echo -ne "$git_color]${COLOR_DEFAULT}" # git status ']'
    fi
 
-   echo -ne "\$"                     #status color '$' or '#'
-   echo -e "${COLOR_DEFAULT} "       #return to black
+   echo -ne "$1\$"                           # status color '$' or '#'
+   echo -e "${COLOR_DEFAULT} "               # return to black
 }
 
 status_prompt()
