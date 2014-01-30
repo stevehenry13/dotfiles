@@ -146,7 +146,7 @@ color_prompt()
                                                
    if [ -n "$git_color" ]; then              # if in git repository
       echo -ne "$git_color[${COLOR_DEFAULT}" # git status '['
-      echo -ne "\$($(which git) rev-parse --abbrev-ref HEAD)" # current git branch
+      echo -ne "\$($(which git) rev-parse --abbrev-ref HEAD | sed 's/^feature\//f\//')" # current git branch
       echo -ne "$git_color]${COLOR_DEFAULT}" # git status ']'
    fi
 
