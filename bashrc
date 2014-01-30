@@ -120,7 +120,7 @@ host_color()
 
 color_prompt()
 {
-   status=$($(which git) status --porcelain)
+   status=$($(which git) status --porcelain 2>/dev/null)
 
    if [ "$?" = 0 ]; then
       if [ -z "$status" ]; then
