@@ -2,8 +2,10 @@
 
 file_list=$(ls $(dirname $0) | grep -v -e "*.pub" -e "subversion" -e "ssh" -e "rvm" -e "$(basename $0)")
 
-# only link the svn config file, not the whole directory
-file_list="$file_list subversion/config ssh/config rvm/gemsets/global.gems"
+# only link the files under the directory, not the whole directory (like chef and vim)
+file_list="$file_list subversion/config"
+file_list="$file_list ssh/config"
+file_list="$file_list rvm/gemsets/global.gems"
 
 for file in $file_list; do
   if [ -h ~/.$file ]; then
