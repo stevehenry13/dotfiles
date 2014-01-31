@@ -124,7 +124,7 @@ color_prompt()
    
    if [ "$?" = 0 ]; then
       #branch=$($(which git) branch -v | awk '{if ($1 == "*") {gsub("feature","f", $2); print $2} if ($4 == "[.*]") print X}')
-      branch=$($(which git) branch -v | awk '$1=="*" {name=$2; if ($4~/\[/) name=name"X"; print name}')
+      branch=$($(which git) branch -v | awk '$1=="*" {name=$2; if ($4~/\[(ahead)|(behind)/) name=name"X"; print name}')
       if [ -z "$status" ]; then
          if [[ "$branch" = *X ]]; then
             git_color=${COLOR_PINK}

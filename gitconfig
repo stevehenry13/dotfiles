@@ -11,6 +11,6 @@
 [core]
 	pager = less -F -X -R
 	editor = vim
-	excludesfile = /home/henrys4/.gitignore
+	excludesfile = ~/.gitignore
 [color]
 	ui = auto
