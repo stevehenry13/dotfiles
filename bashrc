@@ -123,10 +123,11 @@ color_prompt()
    status=$($(which git) status --porcelain 2>/dev/null)
    
    if [ "$?" = 0 ]; then
-      #branch=$($(which git) branch -v | awk '{if ($1 == "*") {gsub("feature","f", $2); print $2} if ($4 == "[.*]") print X}')
-      branch=$($(which git) branch -v | awk '$1=="*" {name=$2; if ($4~/\[(ahead)|(behind)/) name=name"X"; print name}')
+      branch=$($(which git) branch -v |\
+	     awk '$1=="*" {gsub("feature","f", $2);name=$2;if($4~/\[(ahead)|(behind)/)name=name"X";print name}')
       if [ -z "$status" ]; then
          if [[ "$branch" = *X ]]; then
+            #differs from remote
             git_color=${COLOR_PINK}
          else
             git_color=${COLOR_GREEN}
@@ -152,7 +153,7 @@ color_prompt()
                                                
    if [ -n "$git_color" ]; then              # if in git repository
       echo -ne "$git_color[${COLOR_DEFAULT}" # git status '['
-      echo -ne "${branch/X/}"                   # current git branch
+      echo -ne "${branch/X/}"                # current git branch
       echo -ne "$git_color]${COLOR_DEFAULT}" # git status ']'
    fi
 
