@@ -16,3 +16,9 @@
 	ui = auto
 [push]
 	default = simple
+[help]
+	autocorrect = 1
+[pull]
+	rebase = true
+[branch]
+	autosetupmerge = true
