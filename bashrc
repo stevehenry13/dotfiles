@@ -118,13 +118,13 @@ host_color()
    fi
 }
 
-color_prompt()
+git_prompt()
 {
    status=$($(which git) status --porcelain 2>/dev/null)
    
    if [ "$?" = 0 ]; then
       branch=$($(which git) branch -v |\
-	     awk '$1=="*" {gsub("feature","f", $2);name=$2;if($4~/\[(ahead)|(behind)/)name=name"X";print name}')
+         awk '$1=="*" {gsub("feature","f", $2);name=$2;if($4~/\[(ahead)|(behind)/)name=name"X";print name}')
       if [ -z "$status" ]; then
          if [[ "$branch" = *X ]]; then
             #differs from remote
@@ -137,6 +137,15 @@ color_prompt()
       fi
    fi
 
+   if [ -n "$git_color" ]; then              # if in git repository
+      echo -ne "$git_color[${COLOR_DEFAULT}" # git status '['
+      echo -ne "${branch/X/}"                # current git branch
+      echo -ne "$git_color]${COLOR_DEFAULT}" # git status ']'
+   fi
+}
+
+color_prompt()
+{
    echo -ne "$1[${COLOR_DEFAULT}"            # status color '['
    echo -ne "\!"                             # history num
    echo -ne "$1][${COLOR_DEFAULT}"           # status color ']['
@@ -150,13 +159,7 @@ color_prompt()
    echo -ne "$1:${COLOR_DEFAULT}"            # status color ':'
    echo -ne "\w"                             # workspace
    echo -ne "$1]"                            # status color ']'
-                                               
-   if [ -n "$git_color" ]; then              # if in git repository
-      echo -ne "$git_color[${COLOR_DEFAULT}" # git status '['
-      echo -ne "${branch/X/}"                # current git branch
-      echo -ne "$git_color]${COLOR_DEFAULT}" # git status ']'
-   fi
-
+   git_prompt
    echo -ne "$1\$"                           # status color '$' or '#'
    echo -e "${COLOR_DEFAULT} "               # return to black
 }
