@@ -20,5 +20,3 @@
 	autocorrect = 1
 [pull]
 	rebase = true
-[branch]
-	autosetupmerge = true
