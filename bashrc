@@ -129,6 +129,9 @@ git_prompt()
          if [[ "$branch" = *X ]]; then
             #differs from remote
             git_color=${COLOR_PINK}
+         elif [[ -z $(git config --get branch.${branch/X/}.remote) ]]; then
+            #not tracking remote
+            git_color=${COLOR_BLUE}
          else
             git_color=${COLOR_GREEN}
          fi
