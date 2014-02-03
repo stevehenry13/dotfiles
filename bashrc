@@ -238,12 +238,10 @@ if which tmux 2>&1 >/dev/null; then
       tmux has
       if [ 0 -eq "$?" ]; then
          tmux attach
-      else
-         if [ -x ~/bin/tmux_$(hostname) ]; then
-            ~/bin/tmux_$(hostname)
-         else
-            tmux new-session
-         fi
+      elif [ -x ~/bin/tmux_$(hostname) ]; then
+         # Only start a new session if there is a script,
+         # otherwise, a manual start is preferred
+         ~/bin/tmux_$(hostname)
       fi
    fi
 fi
