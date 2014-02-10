@@ -241,14 +241,7 @@ fi
 # TMUX
 if which tmux 2>&1 >/dev/null; then
    if [ -z "$TMUX" ]; then
-      tmux has
-      if [ 0 -eq "$?" ]; then
-         tmux attach
-      elif [ -x ~/bin/tmux_$(hostname) ]; then
-         # Only start a new session if there is a script,
-         # otherwise, a manual start is preferred
-         ~/bin/tmux_$(hostname)
-      fi
+      tmux attach 2>/dev/null || ~/bin/tmux_$(hostname) 2>/dev/null
    fi
 fi
 
