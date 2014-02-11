@@ -120,18 +120,22 @@ host_color()
 
 git_prompt()
 {
-   status=$($(which git) status --porcelain 2>/dev/null)
+   git_cmd=$(which git)
+   status=$($git_cmd status --porcelain 2>/dev/null)
    
    if [ "$?" = 0 ]; then
-      branch=$($(which git) branch -v |\
-         awk '$1=="*" {name=$2;if($4~/\[(ahead)|(behind)/)name=name"X";print name}')
+         branch=$($git_cmd rev-parse --abbrev-ref HEAD )
+         #awk '$1=="*" {name=$2;if($4~/\[(ahead)|(behind)/)name=name"X";print name}')
+         remote_branch=$($git_cmd config --get branch.${branch}.remote)
+
       if [ -z "$status" ]; then
-         if [[ "$branch" = *X ]]; then
-            #differs from remote
-            git_color=${COLOR_PINK}
-         elif [[ -z "$(git config --get branch.${branch/X/}.remote)" ]]; then
+         if [[ -z "${remote_branch}" ]]; then
             #not tracking remote
             git_color=${COLOR_BLUE}
+         elif [[ "$($git_cmd rev-parse $branch)" ==\
+		 "$($git_cmd rev-parse $remote_branch)" ]]; then
+            #differs from remote
+            git_color=${COLOR_PINK}
          else
             git_color=${COLOR_GREEN}
          fi
