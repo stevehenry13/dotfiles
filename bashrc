@@ -125,15 +125,14 @@ git_prompt()
    
    if [ "$?" = 0 ]; then
          branch=$($git_cmd rev-parse --abbrev-ref HEAD )
-         #awk '$1=="*" {name=$2;if($4~/\[(ahead)|(behind)/)name=name"X";print name}')
-         remote_branch=$($git_cmd config --get branch.${branch}.remote)
+         remote_branch=$($git_cmd rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null)
 
       if [ -z "$status" ]; then
          if [[ -z "${remote_branch}" ]]; then
             #not tracking remote
             git_color=${COLOR_BLUE}
-         elif [[ "$($git_cmd rev-parse $branch)" ==\
-		 "$($git_cmd rev-parse $remote_branch)" ]]; then
+         elif [ "$($git_cmd rev-parse $branch)" != \
+		"$($git_cmd rev-parse $remote_branch)" ]; then
             #differs from remote
             git_color=${COLOR_PINK}
          else
