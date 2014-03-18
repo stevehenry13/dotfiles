@@ -1,6 +1,6 @@
 #!/bin/bash
 
-file_list=$(ls $(dirname $0) | grep -v -e "*.pub" -e "subversion" -e "ssh" -e "rvm" -e "$(basename $0)")
+file_list=$(ls $(dirname $0) | grep -v -e ".pub" -e "subversion" -e "ssh" -e "rvm" -e "$(basename $0)")
 
 # only link the files under the directory, not the whole directory (like chef and vim)
 file_list="$file_list subversion/config"
