@@ -30,7 +30,8 @@ fi
 ln -s ~/.Xdefaults ~/.Xresources
 
 # ssh pub keys should be add to authorized_keys, so that passwordless ssh works
-for file in $(ls $(dirname $0)/*.pub); do
+pub_file_list=$(ls $(dirname $0) | grep ".pub")
+for file in $pub_file_list; do
   if [ -z "$(grep "$(cat $file)" ~/.ssh/authorized_keys 2>/dev/null)" ]; then
     mkdir -p ~/.ssh
     cat $file >> ~/.ssh/authorized_keys
