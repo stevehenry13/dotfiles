@@ -34,6 +34,8 @@ noremap <leader>w       :w !sudo tee % > /dev/null <CR>
 noremap <leader>c       :redraw! <bar> cf <bar> copen <CR><CR>
 noremap <leader>s       :call Code_Style() <CR>
 noremap <leader>S       :call Not_Code_Style() <CR>
+noremap <leader>#       :set foldmethod=expr <CR> :set foldexpr=getline(v:lnum)=~'^\\s*#' <CR> zM <CR>
+noremap <leader>/       :set foldmethod=syntax <CR> zM <CR>
 noremap <leader>0       :let string=Shenry_Build(""    ,"" ,"y") <CR><CR> :echo string <CR>
 noremap <leader>1       :let string=Shenry_Build("pp"  ,"" ,"" ) <CR><CR> :echo string <CR>
 noremap <leader>2       :let string=Shenry_Build("swdl","" ,"" ) <CR><CR> :echo string <CR>
