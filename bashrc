@@ -124,15 +124,16 @@ git_prompt()
    status=$($git_cmd status --porcelain 2>/dev/null)
    
    if [ "$?" = 0 ]; then
-         branch=$($git_cmd rev-parse --abbrev-ref HEAD )
+         ref=$($git_cmd symbolic-ref HEAD 2>/dev/null)
+	 branch=${ref#refs/heads/}
          remote_branch=$($git_cmd rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null)
 
       if [ -z "$status" ]; then
          if [[ -z "${remote_branch}" ]]; then
             #not tracking remote
             git_color=${COLOR_BLUE}
-         elif [ "$($git_cmd rev-parse $branch)" != \
-		"$($git_cmd rev-parse $remote_branch)" ]; then
+         elif [ "$($git_cmd rev-parse $branch 2>/dev/null)" != \
+		"$($git_cmd rev-parse $remote_branch 2>/dev/null)" ]; then
             #differs from remote
             git_color=${COLOR_PINK}
          else
