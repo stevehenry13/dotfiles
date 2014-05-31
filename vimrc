@@ -32,6 +32,7 @@ noremap <leader>x       :%!xxd <CR>
 noremap <leader>X       :%!xxd -r <CR>
 noremap <leader>w       :w !sudo tee % > /dev/null <CR>
 noremap <leader>c       :redraw! <bar> cf <bar> copen <CR><CR>
+noremap <leader>l       :call Linux_Style() <CR>
 noremap <leader>s       :call Code_Style() <CR>
 noremap <leader>S       :call Not_Code_Style() <CR>
 noremap <leader>#       :set foldmethod=expr <CR> :set foldexpr=getline(v:lnum)=~'^\\s*#' <CR> zM <CR>
@@ -117,12 +118,28 @@ function! Code_Style()
    source $HOME/.vim/after/ftplugin/c.vim
 endfunction
 
+function! Linux_Style()
+   set tabstop=8
+   set softtabstop=8
+   set shiftwidth=8
+   set noexpandtab
+   set cindent
+   set formatoptions=tcqlron
+   set cinoptions=:0,l1,t0,g0
+
+   syn keyword cOperator likely unlikely
+   syn keyword cType u8 u16 u32 u64 s8 s16 s32 s64
+   autocmd BufWinEnter * match BadFormat /\%>80v.\+\|\s\+\t|\s\+$/
+   autocmd InsertEnter * match BadFormat /\%>80v.\+\|\s\+\t|\s\+\%#\@<!$/
+   autocmd InsertLeave * match BadFormat /\%>80v.\+\|\s\+\t|\s\+$/
+endfunction
+
 function! Not_Code_Style()
    set tabstop=8
    set shiftwidth=8
    set noexpandtab
    set nosmarttab
-   set tw=0
+   set textwidth=80
    set nocindent
    set cinoptions=
    autocmd! BufWinEnter *
