@@ -3,10 +3,19 @@ filetype plugin indent on
 let g:load_doxygen_syntax=1
 let g:matchparen_insert_timeout=5
 let g:matchparen_timeout=25
-let g:syntastic_quiet_messages = {'level': 'warnings'}
+"let g:syntastic_quiet_messages = {'level': 'warnings'}
 syntax on
 
 autocmd! BufRead,BufNewFile *.sass setfiletype sass
+autocmd! VimLeave * call SyntaxQuitCheck()
+
+function! SyntaxQuitCheck()
+   if !exists('b:syntastic_loclist') || empty(b:syntastic_loclist) || !b:syntastic_loclist.isEmpty()
+      call inputsave()
+      call input('Are you aware there are syntax errors? ')
+      call inputrestore()
+   endif
+endfunction
 
 set ofu=syntaxcomplete#Complete
 set wildmenu wildmode=longest,list
@@ -162,9 +171,9 @@ endfunction
 
 function! SDiff(...)
    if '' != FindProjectRoot( '.git' )
-      Gdiff
+      Gdiff HEAD
    elseif '' != FindProjectRoot( '.svn' )
-      call call( "SvnDiff", a:000  )
+      call call( "SvnDiff", a:000 )
    else
       call call( "P4Diff", a:000 )
    endif
