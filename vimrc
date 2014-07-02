@@ -1,9 +1,36 @@
-filetype plugin on
-filetype plugin indent on
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'taglist.vim'
+Plugin 'vim-ruby/vim-ruby'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 let g:load_doxygen_syntax=1
 let g:matchparen_insert_timeout=5
 let g:matchparen_timeout=25
-"let g:syntastic_quiet_messages = {'level': 'warnings'}
 syntax on
 
 autocmd! BufRead,BufNewFile *.sass setfiletype sass
@@ -17,6 +44,7 @@ function! SyntaxQuitCheck()
    endif
 endfunction
 
+set tags+=./tags
 set ofu=syntaxcomplete#Complete
 set wildmenu wildmode=longest,list
 set laststatus=2 statusline=%<%f\ %h%m%r%w\ %n/%{len(filter(range(1,bufnr('$')),'buflisted(v:val)'))}\ %=%v,\ %l/%L\ %P
