@@ -39,3 +39,6 @@ for file in $pub_file_list; do
     chmod 640 ~/.ssh/authorized_keys
   fi
 done
+
+# Install vim plugins
+vim +PluginInstall +qall
