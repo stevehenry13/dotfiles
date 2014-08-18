@@ -15,6 +15,11 @@ if [ -d "$HOME/bin" ] && ! [[ "$PATH" =~ (^|:)"${HOME}/bin"(:|$) ]]; then
     PATH="$HOME/bin:$PATH"
 fi
 
+# set PATH so it includes /opt/local/bin if it exists and is not already in the path
+if [ -d "/opt/local/bin" ] && ! [[ "$PATH" =~ (^|:)"/opt/local/bin"(:|$) ]]; then
+    PATH="/opt/local/bin:$PATH"
+fi
+
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
