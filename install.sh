@@ -20,7 +20,7 @@ for file in $file_list; do
 done
 
 # Fix the svn diff to look in the right home directory
-sed -i "s,\(diff-cmd = \).*/\([\.a-z_]*\),\1${HOME}/\2," ~/.subversion/config
+sed -i '' "s,\(diff-cmd = \).*/\([\.a-z_]*\),\1${HOME}/\2," ~/.subversion/config
 
 if [ -h ~/.Xresources ]; then
   rm ~/.Xresources
@@ -39,6 +39,12 @@ for file in $pub_file_list; do
     chmod 640 ~/.ssh/authorized_keys
   fi
 done
+
+# Fetch vundle
+mkdir -p vim/bundle
+if [[ ! -d 'vim/bundle/Vundle.vim' ]]; then
+  git clone https://github.com/gmarik/Vundle.vim.git vim/bundle/Vundle.vim
+fi
 
 # Install vim plugins
 vim +PluginInstall +qall

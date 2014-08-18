@@ -109,6 +109,8 @@ host_color()
           "$(who grep $(tty | awk -F/dev/ '{print $2}') | awk '{print $NF }')" == "(:0.0)" -o \
           "$(who grep $(tty | awk -F/dev/ '{print $2}') | awk '{print $NF }')" == "" ]; then
        echo -ne "${COLOR_DEFAULT}"
+   elif [[ ! -d '/proc/${PPID}/cmdline' ]]; then
+       echo -ne "${COLOR_DEFAULT}"
    elif [[ "$(cat /proc/${PPID}/cmdline)" == "in.rlogind*" ]]; then
        echo -ne "${COLOR_BRWON}"
    elif [[ "$(cat /proc/${PPID}/cmdline)" == "in.telnetd*" ]]; then 
