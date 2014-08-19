@@ -28,6 +28,7 @@
 *.log
 *.sql
 *.sqlite
+syntax_check_cache/
 
 # OS generated files #
 ######################
