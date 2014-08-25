@@ -33,3 +33,5 @@ URxvt*scrollBar_right: True
 URxvt*thickness: 15
 URxvt*scrollTtyOutput: False
 URxvt*scrollTtyKeypress: True
+
+URxvt*keysym.Down: <C-n>
