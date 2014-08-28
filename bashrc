@@ -236,6 +236,8 @@ fi
 #alias l='ls -CF'
 
 alias vi='vim'
+alias j='rvm use jruby-1.7.11@`grep ruby-gemset .versions.conf | sed "s/^.*=//"`'
+alias mri='rvm use `grep ruby= .versions.conf | sed "s/^.*=//"`@`grep ruby-gemset .versions.conf | sed "s/^.*=//"`'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
