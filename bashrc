@@ -10,6 +10,7 @@ export EDITOR=vim
 export P4CONFIG=.p4c
 export P4DIFF=vimdiff
 
+
 # set PATH so it includes user's private bin if it exists and is not already in the path
 if [ -d "$HOME/bin" ] && ! [[ "$PATH" =~ (^|:)"${HOME}/bin"(:|$) ]]; then
     PATH="$HOME/bin:$PATH"
