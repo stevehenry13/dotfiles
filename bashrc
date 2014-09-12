@@ -129,12 +129,31 @@ host_color()
 git_prompt()
 {
    git_cmd=$(which git)
-   status=$($git_cmd status --porcelain 2>/dev/null)
+   dir=$(git rev-parse --git-dir 2>/dev/null)
    
    if [ "$?" = 0 ]; then
-         ref=$($git_cmd symbolic-ref HEAD 2>/dev/null)
-	 branch=${ref#refs/heads/}
-         remote_branch=$($git_cmd rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null)
+      status=$($git_cmd status --porcelain 2>/dev/null)
+      ref=$($git_cmd symbolic-ref HEAD 2>/dev/null)
+      remote_branch=$($git_cmd rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null)
+
+      if [ -d "$dir/rebase-merge" ]; then
+         ref=$(cat "$dir/rebase-merge/head-name")
+         warn='REBASE'
+      elif [ -d "$dir/rebase-apply" ]; then
+         ref=$(cat "$dir/rebase-apply/head-name")
+         warn='REBASE'
+      elif [ -f "$dir/MERGE_HEAD" ]; then
+         warn='MERGE'
+      elif [ -f "$dir/CHERRY_PICK_HEAD" ]; then
+         warn='CHERRY-PICK'
+      elif [ -f "$dir/REVERT_HEAD" ]; then
+         warn='REVERT'
+      elif [ -f "$dir/BISECT_LOG" ]; then
+         ref=$(cat "$dir/BISECT_START")
+         warn='BISECT'
+      fi
+
+      branch=${ref#refs/heads/}
 
       if [ -z "$status" ]; then
          if [[ -z "${remote_branch}" ]]; then
@@ -155,9 +174,15 @@ git_prompt()
    branch=${branch/X/}
    branch=${branch/feature/f}
 
+   if [ -n "$warn" ]; then
+      msg="$branch|$warn"
+   else
+      msg=$branch
+   fi
+
    if [ -n "$git_color" ]; then              # if in git repository
       echo -ne "$git_color[${COLOR_DEFAULT}" # git status '['
-      echo -ne "${branch}"                   # current git branch
+      echo -ne "${msg}"                      # current git branch/msg
       echo -ne "$git_color]${COLOR_DEFAULT}" # git status ']'
    fi
 }
