@@ -31,6 +31,7 @@ filetype plugin indent on    " required
 let g:load_doxygen_syntax=1
 let g:matchparen_insert_timeout=5
 let g:matchparen_timeout=25
+let g:syntastic_javascript_checkers=['jscs']
 syntax on
 
 autocmd! BufRead,BufNewFile *.sass setfiletype sass
