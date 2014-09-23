@@ -281,11 +281,26 @@ if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
   . /opt/local/etc/profile.d/bash_completion.sh
 fi
 
-# TMUX
-if which tmux 2>&1 >/dev/null; then
-   if [ -z "$TMUX" ]; then
-      tmux attach 2>/dev/null || ~/bin/tmux_$(hostname) 2>/dev/null
+try_tmux()
+{
+   if which tmux 2>&1 >/dev/null; then
+      if [ -z "$TMUX" ]; then
+         tmux attach 2>/dev/null || ~/bin/tmux_$(hostname) 2>/dev/null
+      fi
    fi
+}
+
+# TMUX
+if [[ "$TERM" == rxvt-unicode* ]]; then
+   try_tmux
+elif which urxvt 2>&1 >/dev/null; then
+   urxvt
+else
+   read -p 'Could not find urxvt, still want tmux? (y/n)' answer
+   case $answer in
+      [Yy]*) try_tmux
+   esac
 fi
+
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
