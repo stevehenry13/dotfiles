@@ -34,7 +34,6 @@ let g:matchparen_timeout=25
 let g:syntastic_javascript_checkers=['jscs']
 syntax on
 
-autocmd! BufRead,BufNewFile *.sass setfiletype sass
 autocmd! VimLeave * call SyntaxQuitCheck()
 
 function! SyntaxQuitCheck()
