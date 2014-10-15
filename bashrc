@@ -281,6 +281,8 @@ if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
   . /opt/local/etc/profile.d/bash_completion.sh
 fi
 
+stty stop undef
+
 try_tmux()
 {
    if which tmux 2>&1 >/dev/null; then
@@ -301,6 +303,5 @@ if [ -z "$TMUX" ]; then
       esac
    fi
 fi
-
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
