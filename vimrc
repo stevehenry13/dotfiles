@@ -15,7 +15,6 @@ Plugin 'gmarik/Vundle.vim'
 " plugin on GitHub repo
 Plugin 'marijnh/tern_for_vim'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-git'
