@@ -286,7 +286,7 @@ stty stop undef
 try_tmux()
 {
    if which tmux 2>&1 >/dev/null; then
-      tmux attach 2>/dev/null || ~/bin/tmux_$(hostname) 2>/dev/null
+      tmux attach 2>/dev/null || ~/bin/tmux_hosts/tmux_$(hostname) 2>/dev/null
    fi
 }
 
