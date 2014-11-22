@@ -13,7 +13,7 @@ export P4DIFF=vimdiff
 
 # set PATH so it includes user's private bin if it exists and is not already in the path
 if [ -d "$HOME/bin" ] && ! [[ "$PATH" =~ (^|:)"${HOME}/bin"(:|$) ]]; then
-    PATH="$HOME/bin:$PATH"
+    PATH="$( find $HOME/bin -type d | sed '/\/\./d' | tr '\n' ':' )$PATH"
 fi
 
 # set PATH so it includes /opt/local/bin if it exists and is not already in the path
