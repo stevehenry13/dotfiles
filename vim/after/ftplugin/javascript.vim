@@ -1,5 +1,7 @@
 source $HOME/.vim/after/ftplugin/ruby.vim
 
+setlocal cinoptions=g0,(0
+
 function! NgAlternate( cmd )
   let l:current_file = expand( '%' )
   if l:current_file =~ '_spec.js$'
