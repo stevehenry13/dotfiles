@@ -8,7 +8,10 @@ if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
 
+export ANDROID_HOME="~/android_sdk"
+
 path_dirs="$HOME/.rvm/bin /opt/local/sbin /opt/local/bin /usr/local/bin \
+           $ANDROID_HOME/tools $ANDROID_HOME/platform-tools \
            $( find $HOME/bin -type d | sed '/\/\./d' | tr '\n' ' ' )"
 
 for new_dir in $path_dirs
