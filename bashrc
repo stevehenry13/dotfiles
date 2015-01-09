@@ -11,16 +11,6 @@ export P4CONFIG=.p4c
 export P4DIFF=vimdiff
 
 
-# set PATH so it includes user's private bin if it exists and is not already in the path
-if [ -d "$HOME/bin" ] && ! [[ "$PATH" =~ (^|:)"${HOME}/bin"(:|$) ]]; then
-    PATH="$( find $HOME/bin -type d | sed '/\/\./d' | tr '\n' ':' )$PATH"
-fi
-
-# set PATH so it includes /opt/local/bin if it exists and is not already in the path
-if [ -d "/opt/local/bin" ] && ! [[ "$PATH" =~ (^|:)"/opt/local/bin"(:|$) ]]; then
-    PATH="/opt/local/bin:$PATH"
-fi
-
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
@@ -303,5 +293,3 @@ if [ -z "$TMUX" ]; then
       esac
    fi
 fi
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
