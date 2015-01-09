@@ -1,9 +1,5 @@
 # Mostly just use this file for changing PATH
 
-if [ -f ~/.bashrc ]; then
-  . ~/.bashrc
-fi
-
 export ANDROID_HOME="~/android_sdk"
 
 path_dirs="$HOME/.rvm/bin /opt/local/sbin /opt/local/bin /usr/local/bin \
@@ -19,5 +15,9 @@ do
 done
 
 export PATH="$new_path$PATH"
+
+if [ -f ~/.bashrc ]; then
+  . ~/.bashrc
+fi
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
