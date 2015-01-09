@@ -1,9 +1,5 @@
 # Mostly just use this file for changing PATH
 
-if [ -f ~/.profile ]; then
-  . ~/.profile
-fi
-
 if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
