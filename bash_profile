@@ -1,6 +1,6 @@
 # Mostly just use this file for changing PATH
 
-export ANDROID_HOME="~/android_sdk"
+export ANDROID_HOME="$HOME/android_sdk"
 
 path_dirs="$HOME/.rvm/bin /opt/local/sbin /opt/local/bin /usr/local/bin \
            $ANDROID_HOME/tools $ANDROID_HOME/platform-tools \
