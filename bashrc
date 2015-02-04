@@ -268,7 +268,11 @@ if [ -d ${HOME}/.bash_completion ]; then
 fi
 
 if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
-  . /opt/local/etc/profile.d/bash_completion.sh
+. /opt/local/etc/profile.d/bash_completion.sh
+fi
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
 fi
 
 stty stop undef
