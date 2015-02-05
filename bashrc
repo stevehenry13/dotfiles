@@ -123,7 +123,7 @@ git_prompt()
    
    if [ "$?" = 0 ]; then
       status=$($git_cmd status --porcelain 2>/dev/null)
-      ref=$($git_cmd symbolic-ref HEAD 2>/dev/null)
+      ref=$($git_cmd symbolic-ref HEAD 2>/dev/null || $git_cmd rev-parse --short HEAD 2>/dev/null)
       remote_branch=$($git_cmd rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null)
 
       if [ -d "$dir/rebase-merge" ]; then
