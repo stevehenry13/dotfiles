@@ -139,7 +139,6 @@ git_prompt()
       elif [ -f "$dir/REVERT_HEAD" ]; then
          warn='REVERT'
       elif [ -f "$dir/BISECT_LOG" ]; then
-         ref=$(cat "$dir/BISECT_START")
          warn='BISECT'
       fi
 
