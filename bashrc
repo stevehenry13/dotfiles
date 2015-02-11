@@ -270,7 +270,7 @@ if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
 . /opt/local/etc/profile.d/bash_completion.sh
 fi
 
-if which brew 2>&1 >/dev/null; then
+if which brew >/dev/null 2>&1; then
   if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
   fi
@@ -280,7 +280,7 @@ stty stop undef
 
 try_tmux()
 {
-   if which tmux 2>&1 >/dev/null; then
+   if which tmux >/dev/null 2>&1; then
       tmux attach 2>/dev/null || ~/bin/tmux_hosts/tmux_$(hostname) 2>/dev/null
    fi
 }
@@ -289,7 +289,7 @@ try_tmux()
 if [ -z "$TMUX" ]; then
    if [[ "$TERM" == rxvt-unicode* ]]; then
       try_tmux
-   elif which urxvt 2>&1 >/dev/null; then
+   elif which urxvt >/dev/null 2>&1; then
       urxvt
    else
       read -p 'Could not find urxvt, still want tmux? (y/n)' answer
