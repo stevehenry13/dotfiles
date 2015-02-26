@@ -28,10 +28,13 @@ Plugin 'vim-ruby/vim-ruby'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+let g:markdown_fenced_languages = ['css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'sh', 'xml', 'html']
+
 let g:load_doxygen_syntax=1
 let g:matchparen_insert_timeout=5
 let g:matchparen_timeout=25
-let g:syntastic_javascript_checkers=['jscs']
+let g:syntastic_javascript_checkers=['jscs', 'jshint']
 syntax on
 
 autocmd! VimLeave * call SyntaxQuitCheck()
