@@ -48,3 +48,11 @@ fi
 
 # Install vim plugins
 vim +PluginInstall +qall
+
+if $(hash npm 2>/dev/null); then
+  pushd vim/bundle/tern_for_vim >/dev/null
+  npm install
+  popd >/dev/null
+else
+  echo 'NPM is not installed'
+fi
