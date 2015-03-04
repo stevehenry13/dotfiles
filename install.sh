@@ -11,7 +11,11 @@ for file in $file_list; do
   if [ -h ~/.$file ]; then
     rm ~/.$file
   elif [ -e ~/.$file ]; then
-    mv ~/.$file{,.bak}
+    if cmp --silent ~/.$file $(pwd)/$(dirname $0)/$file; then
+      rm ~/.$file
+    else
+      mv ~/.$file{,.bak}
+    fi
   fi
 
   # Ensure the parent dir exists
