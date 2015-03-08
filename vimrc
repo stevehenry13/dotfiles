@@ -64,6 +64,7 @@ set errorfile=make_output.txt
 set nocscopeverbose
 set pastetoggle=<leader>p
 
+noremap <leader>=       :!column -to' ' <CR> gv_=
 noremap <leader>a       :call SAddEdit() <CR><CR>
 noremap <leader>e       :call SAddEdit() <CR><CR>
 noremap <leader>b       :call SBlame() <CR><CR>
