@@ -54,6 +54,7 @@ set wildmenu wildmode=longest,list
 set laststatus=2 statusline=%<%f\ %h%m%r%w\ %n/%{len(filter(range(1,bufnr('$')),'buflisted(v:val)'))}\ %=%v,\ %l/%L\ %P
 set tabline=%!MyTabLine()
 set formatoptions=tcroqb
+set showbreak=↪
 set hlsearch incsearch ignorecase smartcase
 set showcmd showmode
 set ruler
