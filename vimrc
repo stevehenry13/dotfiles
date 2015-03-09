@@ -70,6 +70,8 @@ noremap <leader>b       :call SBlame() <CR><CR>
 noremap <leader>r       :call SCheckoutRevert() <CR><CR>
 noremap <leader>d       :call SDiff('') <CR><CR>
 noremap <leader>g       :Grep <CR>
+noremap <leader>j       :lnext <CR>
+noremap <leader>k       :lprev <CR>
 noremap <leader>x       :%!xxd <CR>
 noremap <leader>X       :%!xxd -r <CR>
 noremap <leader>w       :w !sudo tee % > /dev/null <CR>
@@ -94,15 +96,15 @@ hi clear BadFormat
 hi       BadFormat    ctermfg=black ctermbg=lightgray
 hi clear SpellBad
 hi       SpellBad     ctermfg=red                     cterm=undercurl
-hi clear SpellLocal                                   
+hi clear SpellLocal
 hi       SpellLocal   ctermfg=red                     cterm=undercurl
-hi clear SpellCap                                     
+hi clear SpellCap
 hi       SpellCap     ctermfg=blue                    cterm=undercurl
-hi clear DiffAdd                                      
+hi clear DiffAdd
 hi       DiffAdd      ctermfg=black ctermbg=yellow    cterm=none
-hi clear DiffText                                     
+hi clear DiffText
 hi       DiffText     ctermfg=black ctermbg=yellow    cterm=none
-hi clear DiffChange                                   
+hi clear DiffChang
 hi       DiffChange                 ctermbg=none      cterm=none
 hi clear DiffDelete
 hi       DiffDelete                 ctermbg=none
