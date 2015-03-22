@@ -23,9 +23,6 @@ for file in $file_list; do
   ln -s $(pwd)/$(dirname $0)/$file ~/.$file
 done
 
-# Fix the svn diff to look in the right home directory
-sed -i'' -e "s,\(diff-cmd = \).*/\([\.a-z_]*\),\1${HOME}/\2," ~/.subversion/config
-
 if [ -h ~/.Xresources ]; then
   rm ~/.Xresources
 fi

@@ -22,3 +22,6 @@
 	prune = true
 [pull]
 	rebase = true
+[filter "mac_home_dir"]
+	smudge = sed \"s,/home/henrys4,/Users/henrys4,\"
+	clean = sed \"s,/Users/henrys4,/home/henrys4,\"
