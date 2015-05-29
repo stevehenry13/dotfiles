@@ -15,7 +15,7 @@
 [color]
 	ui = auto
 [push]
-	default = simple
+	default = tracking
 [help]
 	autocorrect = 1
 [fetch]
