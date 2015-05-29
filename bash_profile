@@ -2,7 +2,7 @@
 
 export ANDROID_HOME="$HOME/android_sdk"
 
-path_dirs="$HOME/.rvm/bin /opt/local/sbin /opt/local/bin /usr/local/bin \
+path_dirs="$HOME/.rvm/bin $HOME/local/bin /opt/local/sbin /opt/local/bin /usr/local/bin \
            $ANDROID_HOME/tools $ANDROID_HOME/platform-tools \
            $( find $HOME/bin -type d | sed '/\/\./d' | tr '\n' ' ' )"
 
@@ -21,5 +21,3 @@ if [ -f ~/.bashrc ]; then
 fi
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
