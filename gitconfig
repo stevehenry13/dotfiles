@@ -10,7 +10,7 @@
 	tool = vimdiff
 [core]
 	pager = less -F -X -R
-	editor = vim
+	editor = vimx
 	excludesfile = ~/.gitignore
 [color]
 	ui = auto
