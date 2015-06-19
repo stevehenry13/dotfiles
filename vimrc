@@ -60,6 +60,7 @@ set magic
 set spell
 set errorfile=make_output.txt
 set nocscopeverbose
+set clipboard^=unnamed
 set pastetoggle=<leader>p
 
 noremap <leader>=       :!column -to' ' <CR> gv_=
