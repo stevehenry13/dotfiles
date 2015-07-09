@@ -21,3 +21,9 @@ if [ -f ~/.bashrc ]; then
 fi
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+versions_conf=$(pwd)/.versions.conf
+if [[ -e $versions_conf ]]; then
+  rvm use `grep ruby= $versions_conf | sed "s/^.*=//"`@`grep ruby-gemset $versions_conf | sed "s/^.*=//"` > /dev/null 2>&1
+fi
+unset version_conf
