@@ -9,14 +9,15 @@ path_dirs="$HOME/.rvm/bin $HOME/local/bin /opt/local/sbin /opt/local/bin /usr/lo
 for new_dir in $path_dirs
 do
   # set PATH so it includes /opt/local/bin if it exists and is not already in the path
-  if [ -d $new_dir ] && ! [[ "$PATH" =~ (^|:)$new_dir(:|$) ]]; then
+  pattern="(^|:)$new_dir(:|$)"
+  if [ -d $new_dir ] && ! echo "$PATH" | egrep -q "$pattern"; then
     new_path="$new_dir:$new_path"
   fi
 done
 
 export PATH="$new_path$PATH"
 
-if [ -f ~/.bashrc ]; then
+if [ -f ~/.bashrc ] && [[ $- == *i* ]]; then
   . ~/.bashrc
 fi
 
