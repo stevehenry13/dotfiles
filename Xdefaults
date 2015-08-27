@@ -30,7 +30,7 @@ URxvt*Color14: #55FFFF
 URxvt*Color7: #AAAAAA
 URxvt*Color15: #FFFFFF
 
-URxvt*geometry: 120x45
+URxvt*geometry: 236x66
 URxvt*scrollBar_right: True
 URxvt*scrollstyle: plain
 URxvt*thickness: 15
