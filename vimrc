@@ -57,6 +57,8 @@ set tabline=%!MyTabLine()
 set formatoptions=tcroqb
 set hlsearch incsearch ignorecase smartcase
 set showcmd showmode
+set relativenumber
+set number
 set ruler
 set magic
 set spell
