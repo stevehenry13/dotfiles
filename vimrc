@@ -76,6 +76,7 @@ noremap <leader>d       :call SDiff('') <CR><CR>
 noremap <leader>g       :Grep <CR>
 noremap <leader>j       :lnext <CR>
 noremap <leader>k       :lprev <CR>
+noremap <leader>n       :set nu! <CR> :set relativenumber! <CR>
 noremap <leader>x       :%!xxd <CR>
 noremap <leader>X       :%!xxd -r <CR>
 noremap <leader>w       :w !sudo tee % > /dev/null <CR>
@@ -96,40 +97,30 @@ noremap <F1> <nop>
 "usage: ':R ls -l' would open a new window listing all files in the current directory
 command! -nargs=* -complete=shellcmd R vnew | setlocal buftype=nofile bufhidden=hide noswapfile | r !<args>
 
-hi clear BadFormat
-hi       BadFormat    ctermfg=black ctermbg=lightgray
-hi clear SpellBad
-hi       SpellBad     ctermfg=red                     cterm=undercurl
-hi clear SpellLocal
-hi       SpellLocal   ctermfg=red                     cterm=undercurl
-hi clear SpellCap
-hi       SpellCap     ctermfg=blue                    cterm=undercurl
-hi clear DiffAdd
-hi       DiffAdd      ctermfg=black ctermbg=yellow    cterm=none
-hi clear DiffText
-hi       DiffText     ctermfg=black ctermbg=yellow    cterm=none
-hi clear DiffChang
-hi       DiffChange                 ctermbg=none      cterm=none
-hi clear DiffDelete
-hi       DiffDelete                 ctermbg=none
-hi clear StatusLineNC
-hi       StatusLineNC ctermfg=black ctermbg=lightgray cterm=none
-hi clear StatusLine
-hi       StatusLine   ctermfg=white ctermbg=black     cterm=none
-hi clear TabLine
-hi       TabLine      ctermfg=black ctermbg=lightgray cterm=none
-hi clear TabLineFill
-hi       TabLineFill  ctermfg=black ctermbg=lightgray cterm=none
-hi clear TabLineSel
-hi       TabLineSel   ctermfg=white ctermbg=black     cterm=bold
-hi clear TabNum
-hi       TabNum       ctermfg=blue  ctermbg=lightgray cterm=none
-hi clear TabNumSel
-hi       TabNumSel    ctermfg=cyan  ctermbg=black     cterm=bold
-hi clear TabBufNum
-hi       TabBufNum    ctermfg=red   ctermbg=lightgray cterm=none
-hi clear TabBufNumSel
-hi       TabBufNumSel ctermfg=red   ctermbg=black     cterm=bold
+function SetHighlight( name, fg, bg, term )
+   exe 'hi clear '.a:name
+   exe 'hi '.a:name.' ctermfg='.a:fg.' ctermbg='.a:bg.' cterm='.a:term
+endfunction
+
+call SetHighlight( 'BadFormat',    'black', 'lightgray', 'none'      )
+call SetHighlight( 'SpellBad',     'red',   'none',      'undercurl' )
+call SetHighlight( 'SpellLocal',   'red',   'none',      'undercurl' )
+call SetHighlight( 'SpellCap',     'blue',  'none',      'undercurl' )
+call SetHighlight( 'DiffAdd',      'black', 'yellow',    'none'      )
+call SetHighlight( 'DiffText',     'black', 'yellow',    'none'      )
+call SetHighlight( 'DiffChange',   'none',  'none',      'none'      )
+call SetHighlight( 'DiffDelete',   'none',  'none',      'none'      )
+call SetHighlight( 'StatusLineNC', 'black', 'lightgray', 'none'      )
+call SetHighlight( 'StatusLine',   'white', 'black',     'none'      )
+call SetHighlight( 'TabLine',      'black', 'lightgray', 'none'      )
+call SetHighlight( 'TabLineFill',  'black', 'lightgray', 'none'      )
+call SetHighlight( 'TabLineSel',   'white', 'black',     'bold'      )
+call SetHighlight( 'TabNum',       'blue',  'lightgray', 'none'      )
+call SetHighlight( 'TabNumSel',    'cyan',  'black',     'bold'      )
+call SetHighlight( 'TabBufNum',    'red',   'lightgray', 'none'      )
+call SetHighlight( 'TabBufNumSel', 'red',   'black',     'bold'      )
+call SetHighlight( 'CursorLineNR', 'red',   'gray',      'none'      )
+call SetHighlight( 'LineNr',       'black', 'gray',      'none'      )
 
 if 1 == executable( 'p4' )
    source $HOME/.vim/perforce.vimrc
