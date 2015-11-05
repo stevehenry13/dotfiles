@@ -62,18 +62,10 @@ set number
 set ruler
 set magic
 set spell
-set errorfile=make_output.txt
 set nocscopeverbose
 set clipboard^=unnamed
 set pastetoggle=<leader>p
 
-noremap <leader>=       :!column -to' ' <CR> gv_=
-noremap <leader>a       :call SAddEdit() <CR><CR>
-noremap <leader>e       :call SAddEdit() <CR><CR>
-noremap <leader>b       :call SBlame() <CR><CR>
-noremap <leader>r       :call SCheckoutRevert() <CR><CR>
-noremap <leader>d       :call SDiff('') <CR><CR>
-noremap <leader>g       :Grep <CR>
 noremap <leader>j       :lnext <CR>
 noremap <leader>k       :lprev <CR>
 noremap <leader>n       :set nu! <CR> :set relativenumber! <CR>
@@ -86,16 +78,8 @@ noremap <leader>s       :call Code_Style() <CR>
 noremap <leader>S       :call Not_Code_Style() <CR>
 noremap <leader>#       :set foldmethod=expr <CR> :set foldexpr=getline(v:lnum)=~'^\\s*#' <CR> zM <CR>
 noremap <leader>/       :set foldmethod=syntax <CR> zM <CR>
-noremap <leader>0       :let string=Shenry_Build(""    ,"" ,"y") <CR><CR> :echo string <CR>
-noremap <leader>1       :let string=Shenry_Build("pp"  ,"" ,"" ) <CR><CR> :echo string <CR>
-noremap <leader>2       :let string=Shenry_Build("swdl","" ,"" ) <CR><CR> :echo string <CR>
-noremap <leader>3       :let string=Shenry_Build("pp"  ,"x","" ) <CR><CR> :echo string <CR>
-noremap <leader>4       :let string=Shenry_Build("swdl","x","" ) <CR><CR> :echo string <CR>
 noremap <leader><space> :noh <CR>
 noremap <F1> <nop>
-
-"usage: ':R ls -l' would open a new window listing all files in the current directory
-command! -nargs=* -complete=shellcmd R vnew | setlocal buftype=nofile bufhidden=hide noswapfile | r !<args>
 
 function SetHighlight( name, fg, bg, term )
    exe 'hi clear '.a:name
@@ -121,14 +105,6 @@ call SetHighlight( 'TabBufNum',    'red',   'lightgray', 'none'      )
 call SetHighlight( 'TabBufNumSel', 'red',   'black',     'bold'      )
 call SetHighlight( 'CursorLineNR', 'red',   'gray',      'none'      )
 call SetHighlight( 'LineNr',       'black', 'gray',      'none'      )
-
-if 1 == executable( 'p4' )
-   source $HOME/.vim/perforce.vimrc
-endif
-
-if 1 == executable( 'svn' )
-   source $HOME/.vim/svn.vimrc
-endif
 
 function MyTabLine()
    let s = ''
@@ -184,69 +160,4 @@ function! Not_Code_Style()
    autocmd! BufWinEnter *
    autocmd! InsertEnter *
    autocmd! InsertLeave *
-endfunction
-
-function! Shenry_Build(target, model, input)
-   if a:input == 'y'
-      call inputsave()
-      let params = input('model, clean, target, window: ')
-      call inputrestore()
-      exe '!sh smake '.params.' &'
-      return 'make '.params
-   else
-      exe '!sh smake '.a:model.' '.a:target.' &'
-      return 'make '.a:model.' '.a:target
-   endif
-endfunction
-
-function! SDiff(...)
-   if '' != FindProjectRoot( '.git' )
-      Gdiff HEAD
-   elseif '' != FindProjectRoot( '.svn' )
-      call call( "SvnDiff", a:000 )
-   else
-      call call( "P4Diff", a:000 )
-   endif
-endfunction
-
-function! SBlame()
-   if '' != FindProjectRoot( '.git' )
-      Gblame
-   elseif '' != FindProjectRoot( '.svn' )
-      call SvnBlame()
-   else
-      call P4Blame()
-   endif
-endfunction
-
-function! SAddEdit()
-   if '' != FindProjectRoot( '.git' )
-      Gadd
-   elseif '' != FindProjectRoot( '.svn' )
-      :!svn add % <CR>
-   else
-      :!p4 edit % <CR>
-   endif
-endfunction
-
-function! SCheckoutRevert()
-   if '' != FindProjectRoot( '.git' )
-      Gcheckout
-   elseif '' != FindProjectRoot( '.svn' )
-      :!svn revert % <CR>
-   else
-      :!p4 revert % <CR>
-   endif
-endfunction
-
-function! FindProjectRoot(target_dir)
-   let root='%:p'
-   while( len( expand( root ) ) > len( expand( root.':h' ) ) )
-      let root=root.':h'
-      let file=expand( root ).'/'.a:target_dir
-      if filereadable( file ) || isdirectory( file )
-         return expand( root )
-      endif
-   endwhile
-   return ''
 endfunction
