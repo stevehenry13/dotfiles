@@ -13,6 +13,7 @@ Plugin 'gmarik/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
+Plugin 'editorconfig/editorconfig-vim'
 Plugin 'taglist.vim'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'scrooloose/syntastic'
@@ -32,11 +33,13 @@ colorscheme default
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 let g:markdown_fenced_languages = ['css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'sh', 'xml', 'html']
 
+let g:EditorConfig_exclude_patterns=['fugitive://.*', 'scp://.*']
 let g:load_doxygen_syntax=1
 let g:matchparen_insert_timeout=5
 let g:matchparen_timeout=25
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_javascript_checkers=['jscs', 'jshint']
+let g:syntastic_html_checkers=['']
 syntax on
 
 autocmd! VimLeave * call SyntaxQuitCheck()
@@ -44,7 +47,7 @@ autocmd! VimLeave * call SyntaxQuitCheck()
 function! SyntaxQuitCheck()
    if !exists('b:syntastic_loclist') || empty(b:syntastic_loclist) || !b:syntastic_loclist.isEmpty()
       call inputsave()
-      call input('Are you aware there are syntax errors? ')
+      call input('syntax errors detected ')
       call inputrestore()
    endif
 endfunction
@@ -66,6 +69,35 @@ set nocscopeverbose
 set clipboard^=unnamed
 set pastetoggle=<leader>p
 
+let awkAlignColumns  = "'{"
+let awkAlignColumns .= "  before_data[NR] = $1;"
+let awkAlignColumns .= "  after_data[NR] = $2;"
+let awkAlignColumns .= "  for (i = 3; i <= NF; i++ ) {"
+let awkAlignColumns .= "    after_data[NR] = after_data[NR]FS$i"
+let awkAlignColumns .= "  }"
+let awkAlignColumns .= "  width[NR] = length($1);"
+let awkAlignColumns .= "  if (length($1) > max) max = length($1)"
+let awkAlignColumns .= "}"
+let awkAlignColumns .= "END {"
+let awkAlignColumns .= "  for (i = 1; i <= NR; ++i) {"
+let awkAlignColumns .= "    w = max - width[i];"
+let awkAlignColumns .= "    printf \"%s\", before_data[i];"
+let awkAlignColumns .= "    if (after_data[i] != null && before != \"true\") printf FS;"
+let awkAlignColumns .= "    if (w > 0) printf \"%*s\", w, \" \";"
+let awkAlignColumns .= "    if (after_data[i] != null && before == \"true\") printf \" \"FS;"
+let awkAlignColumns .= "    printf \"%s\\n\", after_data[i]"
+let awkAlignColumns .= "  }"
+let awkAlignColumns .= "}'"
+
+noremap <leader>=       :!awk -v before='true'  -F= <C-r>=escape( awkAlignColumns, '%!' ) <CR><CR> gv_=
+noremap <leader>:       :!awk -v before='false' -F: <C-r>=escape( awkAlignColumns, '%!' ) <CR> gv_=
+
+noremap <leader>a       :call SAddEdit() <CR><CR>
+noremap <leader>e       :call SAddEdit() <CR><CR>
+noremap <leader>b       :call SBlame() <CR><CR>
+noremap <leader>r       :call SCheckoutRevert() <CR><CR>
+noremap <leader>d       :call SDiff('') <CR><CR>
+noremap <leader>g       :Grep <CR>
 noremap <leader>j       :lnext <CR>
 noremap <leader>k       :lprev <CR>
 noremap <leader>n       :set nu! <CR> :set relativenumber! <CR>
@@ -105,6 +137,7 @@ call SetHighlight( 'TabBufNum',    'red',   'lightgray', 'none'      )
 call SetHighlight( 'TabBufNumSel', 'red',   'black',     'bold'      )
 call SetHighlight( 'CursorLineNR', 'red',   'gray',      'none'      )
 call SetHighlight( 'LineNr',       'black', 'gray',      'none'      )
+call SetHighlight( 'ColorColumn',  'none',  'none',      'none'      )
 
 function MyTabLine()
    let s = ''
