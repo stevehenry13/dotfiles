@@ -1,42 +1,61 @@
-URxvt*loginShell: true
+*loginShell: true
 
-URxvt*font: xft:DejaVu Sans Mono-10
-URxvt*foreground: #000000
-URxvt*background: #F5F5F5
-URxvt*cursorColor: #00FF00
+*font: xft:DejaVu Sans Mono-10
+
+urxvt*foreground: black
+urxvt*background: #E0E0E0
+urxvt*cursorColor: #00F000
+
+urxvt*color0:  #2E3436
+urxvt*color1:  #a40000
+urxvt*color2:  #3E8A00
+urxvt*color3:  #C4A000
+urxvt*color4:  #3465A4
+urxvt*color5:  #75507B
+urxvt*color6:  #ce5c00
+urxvt*color7:  #babdb9
+urxvt*color8:  #555753
+urxvt*color9:  #EF2929
+urxvt*color10: #6AC214
+urxvt*color11: #FCE94F
+urxvt*color12: #729FCF
+urxvt*color13: #AD7FA8
+urxvt*color14: #fcaf3e
+urxvt*color15: #EEEEEC
+
 
 ! Black
-URxvt*Color0: #000000
-URxvt*Color8: #DDDDDD
+! urxvt*Color0: #000000
+! urxvt*Color8: #DDDDDD
 ! Red
-URxvt*Color1: #AA0000
-URxvt*Color9: #FF5555
+! urxvt*Color1: #AA0000
+! urxvt*Color9: #FF5555
 ! Green
-URxvt*Color2: #00AA00
-URxvt*Color10: #55FF55
+! urxvt*Color2: #00AA00
+! urxvt*Color10: #55FF55
 ! Yellow
-URxvt*Color3: #AAAA00
-URxvt*Color11: #DFDF35
+! urxvt*Color3: #AAAA00
+! urxvt*Color11: #DFDF35
 ! Blue
-URxvt*Color4: #0000AA
-URxvt*Color12: #5555FF
+! urxvt*Color4: #0000AA
+! urxvt*Color12: #5555FF
 ! Magenta
-URxvt*Color5: #AA00AA
-URxvt*Color13: #FF55FF
+! urxvt*Color5: #AA00AA
+! urxvt*Color13: #FF55FF
 ! Cyan
-URxvt*Color6: #00AAAA
-URxvt*Color14: #55FFFF
+! urxvt*Color6: #00AAAA
+! urxvt*Color14: #55FFFF
 ! White
-URxvt*Color7: #AAAAAA
-URxvt*Color15: #FFFFFF
+! urxvt*Color7: #AAAAAA
+! urxvt*Color15: #FFFFFF
 
-URxvt*geometry: 236x66
-URxvt*scrollBar_right: True
-URxvt*scrollstyle: plain
-URxvt*thickness: 15
-URxvt*scrollTtyOutput: False
-URxvt*scrollTtyKeypress: True
+urxvt*geometry: 236x66
+urxvt*scrollBar_right: True
+urxvt*scrollstyle: plain
+urxvt*thickness: 15
+urxvt*scrollTtyOutput: False
+urxvt*scrollTtyKeypress: True
 
-URxvt.perl-ext-common: macosx-clipboard
-URxvt*keysym.M-c: perl:macosx-clipboard:copy
-URxvt*keysym.M-v: perl:macosx-clipboard:paste
+urxvt.perl-ext-common: macosx-clipboard
+urxvt*keysym.M-c: perl:macosx-clipboard:copy
+urxvt*keysym.M-v: perl:macosx-clipboard:paste
