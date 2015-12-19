@@ -1,4 +1,7 @@
 {
+  "additionalRules": [".jscs_additional_rules/*.js"],
+  "customRequireAlignedEquals": true,
+  "customRequireAlignedObjectValues": "all",
   "disallowKeywords": ["with", "eval"],
   "disallowKeywordsOnNewLine": ["else"],
   "disallowMultipleLineBreaks": true,
