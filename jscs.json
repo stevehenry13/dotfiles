@@ -37,7 +37,6 @@
   "safeContextKeyword": ["vm"],
   "validateIndentation": 2,
   "validateQuoteMarks": { "mark": "'", "escape": true },
-  "vccmRequireAlignedObjectValues": "all",
   "validateJSDoc": {
     "checkParamNames": true,
     "checkRedundantParams": true,
