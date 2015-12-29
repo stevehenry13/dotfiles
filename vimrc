@@ -70,6 +70,8 @@ set clipboard^=unnamed
 set pastetoggle=<leader>p
 
 let awkAlignColumns  = "'{"
+let awkAlignColumns .= "  gsub(/ +$/, \"\", $1);"
+let awkAlignColumns .= "  gsub(/^ +/, \"\",$2);"
 let awkAlignColumns .= "  before_data[NR] = $1;"
 let awkAlignColumns .= "  after_data[NR] = $2;"
 let awkAlignColumns .= "  for (i = 3; i <= NF; i++ ) {"
@@ -82,15 +84,19 @@ let awkAlignColumns .= "END {"
 let awkAlignColumns .= "  for (i = 1; i <= NR; ++i) {"
 let awkAlignColumns .= "    w = max - width[i];"
 let awkAlignColumns .= "    printf \"%s\", before_data[i];"
-let awkAlignColumns .= "    if (after_data[i] != null && before != \"true\") printf FS;"
-let awkAlignColumns .= "    if (w > 0) printf \"%*s\", w, \" \";"
-let awkAlignColumns .= "    if (after_data[i] != null && before == \"true\") printf \" \"FS;"
-let awkAlignColumns .= "    printf \"%s\\n\", after_data[i]"
+let awkAlignColumns .= "    if (after_data[i] != null) {"
+let awkAlignColumns .= "      if (space == \"before\" || space == \"both\") printf \" \";"
+let awkAlignColumns .= "      if (alignFS != \"true\") printf FS;"
+let awkAlignColumns .= "      if (w > 0) printf \"%*s\", w, \" \";"
+let awkAlignColumns .= "      if (alignFS == \"true\") printf FS;"
+let awkAlignColumns .= "      if (space == \"after\" || space == \"both\") printf \" \";"
+let awkAlignColumns .= "      printf \"%s\\n\", after_data[i]"
+let awkAlignColumns .= "    }"
 let awkAlignColumns .= "  }"
 let awkAlignColumns .= "}'"
 
-noremap <leader>=       :!awk -v before='true'  -F= <C-r>=escape( awkAlignColumns, '%!' ) <CR><CR> gv_=
-noremap <leader>:       :!awk -v before='false' -F: <C-r>=escape( awkAlignColumns, '%!' ) <CR> gv_=
+noremap <leader>=       :!awk -v alignFS='true'  -v space='both'  -F= <C-r>=escape( awkAlignColumns, '%!' ) <CR><CR> gv_=
+noremap <leader>:       :!awk -v alignFS='false' -v space='after' -F: <C-r>=escape( awkAlignColumns, '%!' ) <CR><CR> gv_=
 
 noremap <leader>a       :call SAddEdit() <CR><CR>
 noremap <leader>e       :call SAddEdit() <CR><CR>
