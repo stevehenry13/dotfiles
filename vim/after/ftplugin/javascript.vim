@@ -5,9 +5,9 @@ setlocal cinoptions=g0,(0
 function! NgAlternate( cmd )
   let l:current_file = expand( '%' )
   if l:current_file =~ '_spec.js$'
-    let l:alt_file = substitute( l:current_file, 'test/spec\(.*\)_spec.js', 'app/scripts\1.js', '' )
+    let l:alt_file = substitute( l:current_file, 'test/spec/\(.*\)_spec.js', 'app/\1.js', '' )
   else
-    let l:alt_file = substitute( l:current_file, 'app/scripts\(.*\).js', 'test/spec\1_spec.js', '' )
+    let l:alt_file = substitute( l:current_file, 'app/\(.*\).js', 'test/spec/\1_spec.js', '' )
   endif
 
   if filereadable( alt_file )
