@@ -40,6 +40,7 @@ let g:matchparen_timeout=25
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_javascript_checkers=['jscs', 'jshint']
 let g:syntastic_html_checkers=['']
+let g:syntastic_cpp_compiler_options=' -std=c++11'
 syntax on
 
 autocmd! VimLeave * call SyntaxQuitCheck()
