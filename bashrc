@@ -235,8 +235,7 @@ if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
   alias egrep='egrep --color=auto'
 fi
 
-alias vi='vimx'
-alias vim='vimx'
+alias vi='vim'
 alias j='rvm use jruby-1.7.11@`grep ruby-gemset .versions.conf | sed "s/^.*=//"`'
 alias mri='rvm use `grep ruby= .versions.conf | sed "s/^.*=//"`@`grep ruby-gemset .versions.conf | sed "s/^.*=//"`'
 alias npm-exec='PATH=$(npm bin):$PATH'
@@ -273,7 +272,9 @@ stty stop undef
 try_tmux()
 {
   if which tmux >/dev/null 2>&1; then
-    tmux attach 2>/dev/null || ~/bin/tmux_hosts/tmux_$(hostname) 2>/dev/null
+    tmux attach 2>/dev/null || ~/bin/tmux_hosts/tmux_$(hostname) 2>/dev/null  || tmux
+  else
+    echo 'tmux is not installed'
   fi
 }
 

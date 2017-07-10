@@ -15,7 +15,6 @@ Plugin 'gmarik/Vundle.vim'
 " plugin on GitHub repo
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'taglist.vim'
-Plugin 'marijnh/tern_for_vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
@@ -23,6 +22,7 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'leafgarland/typescript-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -39,8 +39,10 @@ let g:matchparen_insert_timeout=5
 let g:matchparen_timeout=25
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_javascript_checkers=['jscs', 'jshint']
+let g:syntastic_typescript_checkers=['tslint']
 let g:syntastic_html_checkers=['']
 let g:syntastic_cpp_compiler_options=' -std=c++11'
+let g:syntastic_typescript_tsc_args=' --sourceMap --emitDecoratorMetadata --experimentalDecorators'
 syntax on
 
 autocmd! VimLeave * call SyntaxQuitCheck()
