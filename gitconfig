@@ -5,9 +5,15 @@
 	tool = vimdiff
 [difftool]
 	prompt = false
+	trustExitCode = true
 [alias]
 [merge]
-	tool = vimdiff
+	tool = vimmerge
+[mergetool "vimmerge"]
+	cmd = vimmerge vim $BASE $LOCAL $REMOTE $MERGED
+[mergetool]
+	vimmergetrustExitCode = true
+	keepBackup = false
 [core]
 	pager = less -F -X -R
 	editor = vim
@@ -22,6 +28,3 @@
 	prune = true
 [pull]
 	rebase = true
-[filter "mac_home_dir"]
-	smudge = sed \"s,/home/henrys4,/Users/henrys4,\"
-	clean = sed \"s,/Users/henrys4,/home/henrys4,\"

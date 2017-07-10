@@ -160,7 +160,6 @@ git_prompt()
     fi
   fi
 
-  branch=${branch/X/}
   branch=${branch/feature/f}
 
   if [ -n "$warn" ]; then
@@ -272,9 +271,7 @@ stty stop undef
 try_tmux()
 {
   if which tmux >/dev/null 2>&1; then
-    tmux attach 2>/dev/null || ~/bin/tmux_hosts/tmux_$(hostname) 2>/dev/null  || tmux
-  else
-    echo 'tmux is not installed'
+    tmux attach 2>/dev/null || ~/private_bin/tmux_hosts/tmux_$(hostname) 2>/dev/null || tmux
   fi
 }
 
@@ -285,9 +282,6 @@ if [ -z "$TMUX" ]; then
   elif which urxvt >/dev/null 2>&1; then
     urxvt
   else
-    read -p 'Could not find urxvt, still want tmux? (y/n)' answer
-    case $answer in
-      [Yy]*) try_tmux
-    esac
+    try_tmux
   fi
 fi

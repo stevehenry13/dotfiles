@@ -1,7 +1,5 @@
 *loginShell: true
 
-*font: xft:DejaVu Sans Mono-10
-
 urxvt*foreground: black
 urxvt*background: #E0E0E0
 urxvt*cursorColor: #00F000

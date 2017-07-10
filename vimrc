@@ -38,7 +38,7 @@ let g:load_doxygen_syntax=1
 let g:matchparen_insert_timeout=5
 let g:matchparen_timeout=25
 let g:syntastic_always_populate_loc_list=1
-let g:syntastic_javascript_checkers=['jscs', 'jshint']
+let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_typescript_checkers=['tslint']
 let g:syntastic_html_checkers=['']
 let g:syntastic_cpp_compiler_options=' -std=c++11'
