@@ -147,6 +147,7 @@ call SetHighlight( 'TabBufNumSel', 'red',   'black',     'bold'      )
 call SetHighlight( 'CursorLineNR', 'red',   'gray',      'none'      )
 call SetHighlight( 'LineNr',       'black', 'gray',      'none'      )
 call SetHighlight( 'ColorColumn',  'none',  'none',      'none'      )
+call SetHighlight( 'MatchParen',   'black', 'green',     'none'      )
 
 function MyTabLine()
    let s = ''

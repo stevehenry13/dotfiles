@@ -1,5 +1,7 @@
 source $HOME/.vim/after/ftplugin/ruby.vim
 
+inoremap <F8> () => {<CR>}
+
 setlocal cinoptions=g0,(0
 
 function! NgAlternate( cmd )
