@@ -64,33 +64,6 @@ URxvt.boldFont: xft:DejaVuSansMono:bold:size=9:antialias=true
 *color7:                #eee8d5
 *color15:               #cccccc
 
-
-
-! Black
-! urxvt*Color0: #000000
-! urxvt*Color8: #DDDDDD
-! Red
-! urxvt*Color1: #AA0000
-! urxvt*Color9: #FF5555
-! Green
-! urxvt*Color2: #00AA00
-! urxvt*Color10: #55FF55
-! Yellow
-! urxvt*Color3: #AAAA00
-! urxvt*Color11: #DFDF35
-! Blue
-! urxvt*Color4: #0000AA
-! urxvt*Color12: #5555FF
-! Magenta
-! urxvt*Color5: #AA00AA
-! urxvt*Color13: #FF55FF
-! Cyan
-! urxvt*Color6: #00AAAA
-! urxvt*Color14: #55FFFF
-! White
-! urxvt*Color7: #AAAAAA
-! urxvt*Color15: #FFFFFF
-
 urxvt*geometry: 236x66
 urxvt*scrollBar_right: True
 urxvt*scrollstyle: plain
