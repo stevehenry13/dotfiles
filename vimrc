@@ -13,6 +13,7 @@ Plugin 'gmarik/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'taglist.vim'
 Plugin 'scrooloose/syntastic'
@@ -28,7 +29,9 @@ Plugin 'leafgarland/typescript-vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-colorscheme default
+set background=light
+colorscheme solarized
+let g:solarized_termtrans=1
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 let g:markdown_fenced_languages = ['css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'sh', 'xml', 'html']
@@ -45,7 +48,7 @@ let g:syntastic_cpp_compiler_options=' -std=c++11'
 let g:syntastic_typescript_tsc_args=' --sourceMap --emitDecoratorMetadata --experimentalDecorators'
 syntax on
 
-autocmd! VimLeave * call SyntaxQuitCheck()
+"autocmd! VimLeave * call SyntaxQuitCheck()
 
 function! SyntaxQuitCheck()
    if !exists('b:syntastic_loclist') || empty(b:syntastic_loclist) || !b:syntastic_loclist.isEmpty()
@@ -128,11 +131,11 @@ function SetHighlight( name, fg, bg, term )
 endfunction
 
 call SetHighlight( 'BadFormat',    'black', 'lightgray', 'none'      )
-call SetHighlight( 'SpellBad',     'red',   'none',      'undercurl' )
-call SetHighlight( 'SpellLocal',   'red',   'none',      'undercurl' )
+call SetHighlight( 'SpellBad',     'none',  'none',      'undercurl' )
+call SetHighlight( 'SpellLocal',   'none',  'none',      'undercurl' )
 call SetHighlight( 'SpellCap',     'blue',  'none',      'undercurl' )
-call SetHighlight( 'DiffAdd',      'black', 'yellow',    'none'      )
-call SetHighlight( 'DiffText',     'black', 'yellow',    'none'      )
+call SetHighlight( 'DiffAdd',      'black', 'lightgray', 'none'      )
+call SetHighlight( 'DiffText',     'black', 'lightgray', 'none'      )
 call SetHighlight( 'DiffChange',   'none',  'none',      'none'      )
 call SetHighlight( 'DiffDelete',   'none',  'none',      'none'      )
 call SetHighlight( 'StatusLineNC', 'black', 'lightgray', 'none'      )

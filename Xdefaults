@@ -1,25 +1,69 @@
 *loginShell: true
 
-urxvt*foreground: black
-urxvt*background: #E0E0E0
-urxvt*cursorColor: #00F000
+URxvt.font:     xft:DejaVuSansMono:size=9:antialias=true
+URxvt.boldFont: xft:DejaVuSansMono:bold:size=9:antialias=true
 
-urxvt*color0:  #2E3436
-urxvt*color1:  #a40000
-urxvt*color2:  #3E8A00
-urxvt*color3:  #C4A000
-urxvt*color4:  #3465A4
-urxvt*color5:  #75507B
-urxvt*color6:  #ce5c00
-urxvt*color7:  #babdb9
-urxvt*color8:  #555753
-urxvt*color9:  #EF2929
-urxvt*color10: #6AC214
-urxvt*color11: #FCE94F
-urxvt*color12: #729FCF
-urxvt*color13: #AD7FA8
-urxvt*color14: #fcaf3e
-urxvt*color15: #EEEEEC
+!urxvt*foreground: black
+!urxvt*background: #E0E0E0
+!urxvt*cursorColor: #00F000
+!
+!urxvt*color0:  #2E3436
+!urxvt*color1:  #a40000
+!urxvt*color2:  #3E8A00
+!urxvt*color3:  #C4A000
+!urxvt*color4:  #3465A4
+!urxvt*color5:  #75507B
+!urxvt*color6:  #ce5c00
+!urxvt*color7:  #babdb9
+!urxvt*color8:  #555753
+!urxvt*color9:  #EF2929
+!urxvt*color10: #6AC214
+!urxvt*color11: #FCE94F
+!urxvt*color12: #729FCF
+!urxvt*color13: #AD7FA8
+!urxvt*color14: #fcaf3e
+!urxvt*color15: #EEEEEC
+
+
+*background:            #fdf6e3
+*foreground:            #657b83
+*fadeColor:             #fdf6e3
+*cursorColor:           #586e75
+*pointerColorBackground:#93a1a1
+*pointerColorForeground:#586e75
+
+! black dark/light
+*color0:                #073642
+*color8:                #002b36
+
+!! red dark/light
+*color1:                #dc322f
+*color9:                #cb4b16
+
+!! green dark/light
+*color2:                #859900
+*color10:               #586e75
+
+!! yellow dark/light
+*color3:                #b58900
+*color11:               #657b83
+
+!! blue dark/light
+*color4:                #268bd2
+*color12:               #839496
+
+!! magenta dark/light
+*color5:                #d33682
+*color13:               #6c71c4
+
+!! cyan dark/light
+*color6:                #2aa198
+*color14:               #93a1a1
+
+!! white dark/light
+*color7:                #eee8d5
+*color15:               #cccccc
+
 
 
 ! Black

@@ -3,6 +3,7 @@
 export ANDROID_HOME="$HOME/android_sdk"
 
 path_dirs="$HOME/.rvm/bin $HOME/local/bin /opt/local/sbin /opt/local/bin /opt/local/libexec/qt5/bin /usr/local/bin \
+	   /opt/apache-maven-3.5.2/bin \
            $ANDROID_HOME/tools $ANDROID_HOME/platform-tools \
            $( find $HOME/*bin -path $HOME/*bin/example -prune -o -type d | sed '/\/\./d' | tr '\n' ' ' )"
 

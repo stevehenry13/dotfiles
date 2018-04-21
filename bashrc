@@ -6,6 +6,7 @@
 [ -z "$PS1" ] && return
 
 export EDITOR=vim
+export CHROME_BIN=chromium-browser
 
 export P4CONFIG=.p4c
 export P4DIFF=vimdiff
