@@ -1,6 +1,6 @@
 source $HOME/.vim/after/ftplugin/code.vim
-setlocal tabstop=4
-setlocal shiftwidth=4
+setlocal tabstop=2
+setlocal shiftwidth=2
 
 function! HtmlAlternate( cmd )
   let l:current_file = expand( '%' )

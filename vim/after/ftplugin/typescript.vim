@@ -1,6 +1,9 @@
 source $HOME/.vim/after/ftplugin/ruby.vim
 
-inoremap <F8> () => {<CR>}
+inoremap <C-f> () => {<CR>}
+inoremap <C-d> describe('', () => {<CR>});
+inoremap <C-i> it('should ', () => {<CR>});
+inoremap <C-b> beforeEach(() => {<CR>});
 
 setlocal cinoptions=g0,(0
 

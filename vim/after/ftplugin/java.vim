@@ -26,3 +26,6 @@ endfunction
 command! -buffer -bar A  :exe JavaAlternate( 'edit<bang>' )
 command! -buffer -bar AV :exe JavaAlternate( 'vsplit' )
 command! -buffer -bar AS :exe JavaAlternate( 'split' )
+
+set path+=src/main/java
+set path+=*/src/main/java
