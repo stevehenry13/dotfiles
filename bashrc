@@ -5,6 +5,7 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+export DISPLAY=:0
 export EDITOR=vim
 export CHROME_BIN=chromium-browser
 
@@ -12,7 +13,6 @@ export P4CONFIG=.p4c
 export P4DIFF=vimdiff
 
 export XAUTHORITY=/home/steve/.Xauthority
-
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -288,3 +288,8 @@ if [ -z "$TMUX" ]; then
     try_tmux
   fi
 fi
+
+if [ -f ~/.dircolors ]; then
+    . ~/.dircolors
+fi
+
