@@ -78,18 +78,26 @@ syntax on
 
 let g:coc_global_extensions = [
     \ 'coc-css',
+    \ 'coc-cssmodules',
     \ 'coc-diagnostic',
+    \ 'coc-docker',
     \ 'coc-eslint',
     \ 'coc-git',
     \ 'coc-html',
+    \ 'coc-html-css-support',
     \ 'coc-json',
+    \ 'coc-markdown-preview-enhanced',
     \ 'coc-pairs',
+    \ 'coc-prettier',
     \ 'coc-sh',
     \ 'coc-snippets',
     \ 'coc-sql',
+    \ 'coc-sqlfluff',
+    \ 'coc-stylelintplus',
     \ 'coc-svg',
+    \ 'coc-swagger',
     \ 'coc-tsserver',
-    \ '@yaegassy/coc-volar',
+    \ 'coc-vimlsp',
 \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
