@@ -1,9 +1,11 @@
-source $HOME/.vim/after/ftplugin/ruby.vim
+source $HOME/.vim/after/ftplugin/code.vim
+setlocal tabstop=2
+setlocal shiftwidth=2
 
-inoremap <C-f> () => {<CR>}
-inoremap <C-d> describe('', () => {<CR>});
-inoremap <C-i> it('should ', () => {<CR>});
-inoremap <C-b> beforeEach(() => {<CR>});
+inoremap <C-A> () => {<CR>}
+inoremap <C-D> describe('', () => {<CR>})
+inoremap <C-I> it('should ', () => {<CR>})
+inoremap <C-B> beforeEach(() => {<CR>})
 
 setlocal cinoptions=g0,(0
 

@@ -2,7 +2,7 @@ source $HOME/.vim/after/ftplugin/code.vim
 setlocal tabstop=4
 setlocal shiftwidth=4
 
-setlocal cinoptions=g0,(0
+setlocal cinoptions=g0,(0,j4,J4
 
 function! NgAlternate( cmd )
   let l:current_file = expand( '%' )

@@ -292,4 +292,3 @@ fi
 if [ -f ~/.dircolors ]; then
     . ~/.dircolors
 fi
-
